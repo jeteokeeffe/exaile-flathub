@@ -1,0 +1,20 @@
+--- Makefile	2020-04-11 18:11:41.086858648 -0400
++++ Makefile.changes	2020-04-12 22:19:39.458675602 -0400
+@@ -2,7 +2,7 @@
+ PYTEST        ?= py.test-3
+ BLACK         ?= black
+ 
+-PREFIX         = /usr/local
++PREFIX         ?= /usr/local
+ EPREFIX        = $(PREFIX)
+ 
+ LIBINSTALLDIR  = $(EPREFIX)/lib
+@@ -194,7 +194,7 @@
+ 
+ 
+ plugins_dist:
+-	$(MAKE) -C plugins dist
++	$(MAKE) PREFIX=$(PREFIX) -C plugins dist
+ 
+ manpage: builddir
+ 	LC_ALL=C help2man -n "music manager and player" -N ./exaile \
